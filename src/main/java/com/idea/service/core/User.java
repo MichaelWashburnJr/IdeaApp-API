@@ -1,4 +1,4 @@
-package com.example.helloworld.core;
+package com.idea.service.core;
 
 import java.security.Principal;
 import java.util.Set;

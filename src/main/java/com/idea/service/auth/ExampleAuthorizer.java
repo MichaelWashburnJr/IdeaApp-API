@@ -1,6 +1,7 @@
-package com.example.helloworld.auth;
+package com.idea.service.auth;
 
-import com.example.helloworld.core.User;
+import com.idea.service.core.User;
+
 import io.dropwizard.auth.Authorizer;
 
 public class ExampleAuthorizer implements Authorizer<User> {

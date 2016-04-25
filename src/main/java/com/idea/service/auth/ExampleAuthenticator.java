@@ -1,8 +1,9 @@
-package com.example.helloworld.auth;
+package com.idea.service.auth;
 
-import com.example.helloworld.core.User;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+import com.idea.service.core.User;
+
 import io.dropwizard.auth.AuthenticationException;
 import io.dropwizard.auth.Authenticator;
 import io.dropwizard.auth.basic.BasicCredentials;
