@@ -1,4 +1,4 @@
-package com.idea.service;
+package com.idea.service.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.ImmutableMap;
