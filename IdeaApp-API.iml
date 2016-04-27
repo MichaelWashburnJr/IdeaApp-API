@@ -145,5 +145,6 @@
     <orderEntry type="library" name="Maven: io.dropwizard:dropwizard-jdbi:1.0.0-rc3-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.jdbi:jdbi:2.73" level="project" />
     <orderEntry type="library" name="Maven: io.dropwizard.metrics:metrics-jdbi:3.1.2" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.22" level="project" />
   </component>
 </module>
