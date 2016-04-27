@@ -1,5 +1,7 @@
 package com.idea.service;
 import com.idea.service.config.IdeaAppConfiguration;
+import com.idea.service.dao.UserDAO;
+import com.idea.service.resources.UserResource;
 import io.dropwizard.auth.AuthValueFactoryProvider;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
@@ -15,6 +17,8 @@ import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 
 import com.idea.service.resources.IdeaAppResource;
 import com.idea.service.models.User;
+import org.skife.jdbi.v2.DBI;
+import io.dropwizard.jdbi.DBIFactory;
 
 public class IdeaAppService extends Application<IdeaAppConfiguration> {
     public static void main(String[] args) throws Exception {
@@ -48,7 +52,19 @@ public class IdeaAppService extends Application<IdeaAppConfiguration> {
 
     @Override
     public void run(IdeaAppConfiguration configuration, Environment environment) {
+
         environment.jersey().register(RolesAllowedDynamicFeature.class);
         environment.jersey().register(new IdeaAppResource());
+
+        /* initialize DB and DAOs */
+        final DBIFactory factory = new DBIFactory();
+        final DBI jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
+
+        final UserDAO userDAO = jdbi.onDemand(UserDAO.class);
+
+        /* Initialize Resources */
+        final UserResource userResource = new UserResource(userDAO);
+        environment.jersey().register(userResource);
+
     }
 }

@@ -31,16 +31,27 @@ public class User {
                 '}';
     }
 
+
     /****************************************************************
      * Getters and Setters
      ****************************************************************/
+
+    public Integer getId() {
+        return id;
+    }
+
+    public User setId(Integer id) {
+        this.id = id;
+        return this;
+    }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public User setEmail(String email) {
         this.email = email;
+        return this;
     }
 
 }
