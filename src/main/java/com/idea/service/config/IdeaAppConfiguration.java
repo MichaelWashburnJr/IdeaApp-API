@@ -19,9 +19,12 @@ public class IdeaAppConfiguration extends Configuration {
     @NotNull
     private DataSourceFactory database = new DataSourceFactory();
 
+    public void setDatabase(DataSourceFactory database) {
+        this.database = database;
+    }
+
     @JsonProperty("database")
     public DataSourceFactory getDataSourceFactory() {
         return database;
     }
-
 }
