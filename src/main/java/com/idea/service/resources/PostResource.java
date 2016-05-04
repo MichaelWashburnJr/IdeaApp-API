@@ -1,7 +1,7 @@
 package com.idea.service.resources;
 
-import com.idea.service.dao.UserDAO;
-import com.idea.service.models.User;
+import com.idea.service.dao.PostDAO;
+import com.idea.service.models.Post;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -11,18 +11,18 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 /**
- * Created by Michael Washburn on 4/27/2016.
+ * Created by Michael Washburn on 5/3/2016.
  */
-@Path("/users")
+@Path("/posts")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
-public class UserResource {
+public class PostResource {
 
 
-    private UserDAO userDAO;
+    private PostDAO postDAO;
 
-    public UserResource(UserDAO userDAO) {
-        this.userDAO = userDAO;
+    public PostResource(PostDAO postDAO) {
+        this.postDAO = postDAO;
     }
 
     /****************************************************************
@@ -31,8 +31,8 @@ public class UserResource {
 
     @GET
     @Path("/all")
-    public List<User> getAll() {
-        return userDAO.getAll();
+    public List<Post> getAll() {
+        return postDAO.getAll();
     }
 
 }

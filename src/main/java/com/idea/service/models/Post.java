@@ -5,9 +5,9 @@ import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 /**
- * Created by Michael Washburn on 4/26/2016.
+ * Created by Michael Washburn on 5/3/2016.
  */
-public class User {
+public class Post {
 
     /****************************************************************
      * Fields
@@ -16,23 +16,21 @@ public class User {
     @JsonProperty
     private Integer id;
 
-    @NotNull
     @JsonProperty
-    private String email;
+    private Integer authorId;
+
+    @JsonProperty
+    private Integer categoryId;
 
     @NotNull
     @JsonProperty
-    private String name;
+    private boolean isProject;
+
+    @JsonProperty
+    private String title;
 
     @JsonProperty
     private String description;
-
-    @JsonProperty
-    private String imageUrl;
-
-    @NotNull
-    @JsonProperty
-    private boolean isActive;
 
     @NotNull
     @JsonProperty
@@ -44,13 +42,13 @@ public class User {
      ****************************************************************/
     @Override
     public String toString() {
-        return "User{" +
+        return "Post{" +
                 "id=" + id +
-                ", email='" + email + '\'' +
-                ", name='" + name + '\'' +
+                ", authorId=" + authorId +
+                ", categoryId=" + categoryId +
+                ", isProject=" + isProject +
+                ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", isActive=" + isActive +
                 ", createdAt=" + createdAt +
                 '}';
     }
@@ -58,29 +56,28 @@ public class User {
     /****************************************************************
      * Getters
      ****************************************************************/
-
     public Integer getId() {
         return id;
     }
 
-    public String getEmail() {
-        return email;
+    public Integer getAuthorId() {
+        return authorId;
     }
 
-    public String getName() {
-        return name;
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    public boolean isProject() {
+        return isProject;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public String getDescription() {
         return description;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public boolean isActive() {
-        return isActive;
     }
 
     public Timestamp getCreatedAt() {
@@ -91,37 +88,37 @@ public class User {
      * Setters
      ****************************************************************/
 
-    public User setId(Integer id) {
+    public Post setId(Integer id) {
         this.id = id;
         return this;
     }
 
-    public User setEmail(String email) {
-        this.email = email;
+    public Post setAuthorId(Integer authorId) {
+        this.authorId = authorId;
         return this;
     }
 
-    public User setName(String name) {
-        this.name = name;
+    public Post setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
         return this;
     }
 
-    public User setDescription(String description) {
+    public Post setIsProject(boolean project) {
+        isProject = project;
+        return this;
+    }
+
+    public Post setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public Post setDescription(String description) {
         this.description = description;
         return this;
     }
 
-    public User setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-        return this;
-    }
-
-    public User setIsActive(boolean active) {
-        isActive = active;
-        return this;
-    }
-
-    public User setCreatedAt(Timestamp createdAt) {
+    public Post setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
         return this;
     }

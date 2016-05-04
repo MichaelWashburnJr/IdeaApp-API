@@ -1,6 +1,8 @@
 package com.idea.service;
 import com.idea.service.config.IdeaAppConfiguration;
+import com.idea.service.dao.PostDAO;
 import com.idea.service.dao.UserDAO;
+import com.idea.service.resources.PostResource;
 import com.idea.service.resources.UserResource;
 import io.dropwizard.auth.AuthValueFactoryProvider;
 import io.dropwizard.Application;
@@ -17,6 +19,7 @@ import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 
 import com.idea.service.resources.IdeaAppResource;
 import com.idea.service.models.User;
+import org.hibernate.event.spi.PostCollectionRecreateEvent;
 import org.skife.jdbi.v2.DBI;
 import io.dropwizard.jdbi.DBIFactory;
 
@@ -27,7 +30,7 @@ public class IdeaAppService extends Application<IdeaAppConfiguration> {
 
     @Override
     public String getName() {
-        return "hello-world";
+        return "IdeaAppService";
     }
 
     @Override
@@ -61,10 +64,14 @@ public class IdeaAppService extends Application<IdeaAppConfiguration> {
         final DBI jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
 
         final UserDAO userDAO = jdbi.onDemand(UserDAO.class);
+        final PostDAO postDAO = jdbi.onDemand(PostDAO.class);
 
         /* Initialize Resources */
         final UserResource userResource = new UserResource(userDAO);
+        final PostResource postResource = new PostResource(postDAO);
+
         environment.jersey().register(userResource);
+        environment.jersey().register(postResource);
 
     }
 }
